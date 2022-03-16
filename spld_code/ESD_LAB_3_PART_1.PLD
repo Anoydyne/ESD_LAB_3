@@ -1,0 +1,33 @@
+Name     Esd_lab_3_part_1 ;
+PartNo   00 ;
+Date     2/22/2022 ;
+Revision 01 ;
+Designer Ishaan ;
+Company  University of Colorado ;
+Assembly None ;
+Location Boulder ;
+Device   g16v8a ;
+
+/* *************** INPUT PINS *********************/
+PIN  2   =   A15                      ; /*   Assign A15 to pin 2  */ 
+PIN  3   =   A14                      ; /*   Assign A14 to pin 3  */ 
+PIN  4   =   A13                      ; /*   Assign A13 to pin 4  */ 
+PIN  5   =   A12                      ; /*   Assign A12 to pin 5  */ 
+PIN  6   =   RD                       ; /*   Assign RD to pin 6   */ 
+PIN  7   =   PSEN                     ; /*   Assign PSEN to pin 7 */ 
+PIN  8   =   WR			    ; /*   Assign WR to pin 8   */
+PIN  9	  =   A11			    ;
+PIN 11   =   A10			    ;	
+/* *************** OUTPUT PINS *********************/
+PIN  12  = READ                        ; /*  Assign READ to pin 12       */ 
+PIN  13  = CSPERIPH                    ; /*  Assign CSPERIPH to pin 13   */ 
+PIN  15  = CE                          ; /*  Assign CE to pin 15         */ 
+PIN  14  = CLK			     ; /* Assign CLK to Pin 14         */
+PIN  16  = WRITE			     ;
+
+
+READ = RD&PSEN 			;/*  READ is equal RD and PSEN */
+CSPERIPH=!(A15&A14&A13&A12) 	;/* CSPERIPH is not of and output of all the pins from A12-A15 */
+CE=!((!A15)&(A10#A11#A12#A13#A14))					;/* A15 is equal to CE */
+CLK= ((!(A15)) & (!(WR)))		;/* CLK is Equal to AND of !A15 and !WR */
+WRITE = WR				;
